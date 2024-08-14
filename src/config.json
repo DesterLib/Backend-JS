@@ -1,0 +1,16 @@
+{
+  "homePage": {
+    "carousel": true,
+    "categorySlider": true,
+    "genreSlider": true,
+    "collectionSlider": true
+  },
+  "fileNameDominance": "folder",
+  "allowedExtensions": [".mp4", ".mkv", ".avi", ".mov", ".webm"],
+  "directories": [
+    {
+      "path": "/Users/alken/Desktop/dester/js-server/files/tg_collection",
+      "type": "tv"
+    }
+  ]
+}
