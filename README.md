@@ -30,6 +30,11 @@ Enter values without quotes:
 - **GET Request**
   - **Description:** Provides real-time updates on the data generation process initiated by a POST request.
 
+## Development Setup
+
+- Execute `pnpm dev:gen` to create test files and folders.
+- If desired, update the `demo.mp4` file in the root directory and modify the final lines of `dummy_folder_gen.ts` to adjust file generation.
+
 ## Notes
 
 - This application does not use a database.

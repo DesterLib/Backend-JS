@@ -7,8 +7,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
+    "dev:gen": "tsx watch dummy_folder_gen.ts"
   },
   "keywords": [],
   "author": "",
