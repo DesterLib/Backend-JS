@@ -1,8 +1,7 @@
 import fs from "fs";
 import path from "path";
-import { Dominance } from "../types/configTypes";
+import { Config, Dominance } from "../types/configTypes";
 import { Season, TVShow } from "../types/tmdbTypes";
-import config from "../config";
 import {
   fetchTvTmdbDataBase,
   fetchTvTmdbDataSeason,
@@ -138,6 +137,26 @@ function getSubdirectories(mainFolder: string): string[] {
 
 // Get the list of allowed files inside a folder
 function getAllowedFiles(seasonPath: string): string[] {
+  const configPath = process.env.CONFIG_PATH;
+
+  if (!configPath) {
+    throw new Error("CONFIG_PATH environment variable is not set.");
+  }
+
+  // Resolve the absolute path
+  const absolutePath = path.resolve(configPath);
+
+  // Read and parse the configuration file
+  let config: Config;
+
+  try {
+    const fileContent = fs.readFileSync(absolutePath, "utf-8");
+    config = JSON.parse(fileContent) as Config;
+  } catch (error: any) {
+    throw new Error(
+      `Failed to read or parse the config file: ${error.message}`
+    );
+  }
   return fs.readdirSync(seasonPath).filter((file) => {
     const ext = path.extname(file).toLowerCase();
     return config.allowedExtensions.includes(ext);

@@ -13,4 +13,10 @@ router.get("/", async (req, res) => {
   });
 });
 
+router.post("/", async (req, res) => {
+  res.json({
+    message: "Successfully generated content for Home Page",
+  });
+});
+
 export default router;
