@@ -2,12 +2,10 @@ import "dotenv/config";
 import express from "express";
 import helmet from "helmet";
 import cors from "cors";
-import scanFilesRoute from "./routes/scanFileRoute";
-import homeRoute from "./routes/homeRoute";
-import configRoute from "./routes/configRoute";
+import appRouter from "./router";
 
 const app = express();
-const port = 8803;
+const PORT = process.env.PORT || 8803;
 
 app.use(
   cors({
@@ -17,10 +15,8 @@ app.use(
 
 app.use(helmet());
 
-app.use("/api/home", homeRoute);
-app.use("/api/scan-files", scanFilesRoute);
-app.use("/api/config", configRoute);
+app.use("/api/v1", appRouter);
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
