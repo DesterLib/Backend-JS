@@ -6,11 +6,17 @@
     "collectionSlider": true
   },
   "fileNameDominance": "folder",
-  "allowedExtensions": [".mp4", ".mkv", ".avi", ".mov", ".webm"],
+  "allowedVideoExtensions": [".mp4", ".mkv", ".avi", ".mov", ".webm"],
+  "allowedImageExtensions": [".png", ".jpg", ".jpeg", ".webp", ".svg"],
+  "allowedSubtitleExtensions": [".srt", ".vtt", ".ass"],
   "directories": [
     {
       "path": "/Users/alken/Desktop/dester/js-server/files/tg_collection",
       "type": "tv"
+    },
+    {
+      "path": "/Users/alken/Desktop/dester/js-server/files/movies",
+      "type": "movie"
     }
   ]
 }

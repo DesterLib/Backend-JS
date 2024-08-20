@@ -15,6 +15,8 @@ export interface HomePage {
 export interface Config {
   homePage: HomePage;
   fileNameDominance: Dominance;
-  allowedExtensions: string[];
+  allowedVideoExtensions: string[];
+  allowedImageExtensions: string[];
+  allowedSubtitleExtensions: string[];
   directories: Directory[];
 }

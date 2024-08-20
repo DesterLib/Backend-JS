@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { Config, Dominance } from "../types/configTypes";
+import { Dominance } from "../types/configTypes";
 import { Season, TVShow } from "../types/tmdbTypes";
 import {
   fetchTvTmdbDataBase,
@@ -8,6 +8,7 @@ import {
   fetchTvTmdbDataEpisode,
 } from "./fetchTvTmdbData";
 import extractTMDBId from "../utils/extractTMDBId";
+import categorizeAllowableFiles from "../utils/categorizeAllowableFiles";
 
 // Main function to generate TV metadata
 async function generateTVMetadata(
@@ -91,12 +92,12 @@ async function processEpisodeFiles(
   tmdbId: string | null,
   dominance: Dominance
 ): Promise<any[]> {
-  const episodeFiles = getAllowedFiles(seasonPath);
+  const episodeFiles = categorizeAllowableFiles(seasonPath);
   const episodes: any[] = [];
   const episodePaths = new Set<string>();
 
   await Promise.all(
-    episodeFiles.map(async (episodeFile) => {
+    episodeFiles.videos.map(async (episodeFile) => {
       const episodePath = path.join(seasonPath, episodeFile);
       if (episodePaths.has(episodePath)) return;
       episodePaths.add(episodePath);
@@ -132,34 +133,6 @@ function getSubdirectories(mainFolder: string): string[] {
   return fs.readdirSync(mainFolder).filter((folder) => {
     const folderPath = path.join(mainFolder, folder);
     return fs.statSync(folderPath).isDirectory();
-  });
-}
-
-// Get the list of allowed files inside a folder
-function getAllowedFiles(seasonPath: string): string[] {
-  const configPath = process.env.CONFIG_PATH;
-
-  if (!configPath) {
-    throw new Error("CONFIG_PATH environment variable is not set.");
-  }
-
-  // Resolve the absolute path
-  const absolutePath = path.resolve(configPath);
-
-  // Read and parse the configuration file
-  let config: Config;
-
-  try {
-    const fileContent = fs.readFileSync(absolutePath, "utf-8");
-    config = JSON.parse(fileContent) as Config;
-  } catch (error: any) {
-    throw new Error(
-      `Failed to read or parse the config file: ${error.message}`
-    );
-  }
-  return fs.readdirSync(seasonPath).filter((file) => {
-    const ext = path.extname(file).toLowerCase();
-    return config.allowedExtensions.includes(ext);
   });
 }
 

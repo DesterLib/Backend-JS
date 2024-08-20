@@ -1,11 +1,9 @@
 import fs from "fs";
 import { Config } from "../types/configTypes";
 
-const configPath = process.env.CONFIG_PATH || "";
-
-const readConfig = () => {
+const readJson = (filePath: string) => {
   return new Promise<Config>((resolve, reject) => {
-    fs.readFile(configPath, "utf8", (err, data) => {
+    fs.readFile(filePath, "utf8", (err, data) => {
       if (err) {
         return reject(new Error("Error reading config file: " + err.message));
       }
@@ -19,4 +17,4 @@ const readConfig = () => {
   });
 };
 
-export default readConfig;
+export default readJson;

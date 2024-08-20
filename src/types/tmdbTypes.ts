@@ -16,3 +16,9 @@ export interface TVShow {
   tmdb_data: string;
   seasons: Season[];
 }
+
+export interface Movie {
+  media_type: "movie";
+  tmdb_data: string;
+  files: any;
+}
