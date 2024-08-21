@@ -1,18 +1,21 @@
 {
-  "name": "js-server",
-  "version": "1.0.0",
-  "description": "",
+  "name": "dester-server-js",
+  "version": "0.0.1",
+  "description": "Typesafe javascript backend for DesterLib",
   "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts",
-    "gen:movie": "tsx dummy_folder_gen.ts -m movie -f /Users/alken/Desktop/dester/js-server/files/movies",
-    "gen:tv": "tsx dummy_folder_gen.ts -m tv -f /Users/alken/Desktop/dester/js-server/files/tvShows"
+    "gen:movie": "tsx dummy_folder_gen.ts -m movie -f /Users/alken/Desktop/dester/js-server/bin/movies",
+    "gen:tv": "tsx dummy_folder_gen.ts -m tv -f /Users/alken/Desktop/dester/js-server/bin/tvShows"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "dester",
+    "desterlib"
+  ],
+  "author": "DesterLib",
+  "license": "AGPL-3.0",
   "dependencies": {
     "axios": "^1.7.3",
     "cors": "^2.8.5",

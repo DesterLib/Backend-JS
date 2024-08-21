@@ -11,7 +11,7 @@ const mediaType = args.m;
 const videoFilePath =
   args.v || "/Users/alken/Desktop/dester/js-server/demo.mp4";
 const genGenFolder =
-  args.f || "/Users/alken/Desktop/dester/js-server/files/bin";
+  args.f || "/Users/alken/Desktop/dester/js-server/bin";
 
 // TMDB API base URL
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
