@@ -11,12 +11,12 @@
   "allowedSubtitleExtensions": [".srt", ".vtt", ".ass"],
   "directories": [
     {
-      "path": "/Users/alken/Desktop/dester/js-server/files/tg_collection",
-      "type": "tv"
-    },
-    {
       "path": "/Users/alken/Desktop/dester/js-server/files/movies",
       "type": "movie"
+    },
+    {
+      "path": "/Users/alken/Desktop/dester/js-server/files/tvShows",
+      "type": "tv"
     }
   ]
 }

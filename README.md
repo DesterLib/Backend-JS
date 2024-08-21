@@ -34,6 +34,7 @@ Enter values without quotes:
 
 - Execute `pnpm dev:gen` to create test files and folders.
 - If desired, update the `demo.mp4` file in the root directory and modify the final lines of `dummy_folder_gen.ts` to adjust file generation.
+- `-mt` media type `movie | tv`
 
 ## Notes
 
