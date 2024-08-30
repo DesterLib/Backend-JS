@@ -1,22 +1,50 @@
 export type Dominance = "folder" | "filename";
 
-export interface Directory {
+export interface Config {
+  server: Server;
+  users: User[];
+  fileSettings: FileSettings;
+  collections: Collection[];
+}
+
+export interface Collection {
+  name: string;
   path: string;
-  type: string;
+  mediaType: string;
+  isAdult: boolean;
+  passwordProtected: boolean;
+  password: string;
+  userAccessIds: string[];
+}
+
+export interface FileSettings {
+  fileNameDominance: Dominance;
+  allowedExtensions: AllowedExtensions;
+}
+
+export interface AllowedExtensions {
+  video: string[];
+  image: string[];
+  subtitle: string[];
+}
+
+export interface Server {
+  name: string;
+  homePage: HomePage;
 }
 
 export interface HomePage {
-  carousel: boolean;
-  categorySlider: boolean;
-  genreSlider: boolean;
-  collectionSlider: boolean;
+  carouselEnabled: boolean;
+  categorySliderEnabled: boolean;
+  genreSliderEnabled: boolean;
+  collectionSliderEnabled: boolean;
 }
 
-export interface Config {
-  homePage: HomePage;
-  fileNameDominance: Dominance;
-  allowedVideoExtensions: string[];
-  allowedImageExtensions: string[];
-  allowedSubtitleExtensions: string[];
-  directories: Directory[];
+export interface User {
+  id: string;
+  name: string;
+  passwordProtected: boolean;
+  password: string;
+  isChildUser: boolean;
+  profileImage: string;
 }

@@ -1,22 +1,21 @@
 {
-  "homePage": {
-    "carousel": true,
-    "categorySlider": true,
-    "genreSlider": true,
-    "collectionSlider": true
-  },
-  "fileNameDominance": "folder",
-  "allowedVideoExtensions": [".mp4", ".mkv", ".avi", ".mov", ".webm"],
-  "allowedImageExtensions": [".png", ".jpg", ".jpeg", ".webp", ".svg"],
-  "allowedSubtitleExtensions": [".srt", ".vtt", ".ass"],
-  "directories": [
-    {
-      "path": "/Users/alken/Desktop/dester/js-server/bin/movies",
-      "type": "movie"
-    },
-    {
-      "path": "/Users/alken/Desktop/dester/js-server/bin/tvShows",
-      "type": "tv"
+  "server": {
+    "name": "",
+    "homePage": {
+      "carouselEnabled": true,
+      "categorySliderEnabled": true,
+      "genreSliderEnabled": true,
+      "collectionSliderEnabled": true
     }
-  ]
+  },
+  "users": [],
+  "fileSettings": {
+    "fileNameDominance": "folder",
+    "allowedExtensions": {
+      "video": [".mp4", ".mkv", ".avi", ".mov", ".webm"],
+      "image": [".png", ".jpg", ".jpeg", ".webp", ".svg"],
+      "subtitle": [".srt", ".vtt", ".ass"]
+    }
+  },
+  "collections": []
 }

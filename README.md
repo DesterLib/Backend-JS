@@ -10,11 +10,50 @@ Enter values without quotes:
 
 ## API Endpoints
 
-### `/api/home`
+### `/api/v1/home`
 
 - **Description:** Provides data for the homepage of the Dester client.
 
-### `/api/scan-files`
+### `/api/v1/users`
+
+- **GET Request**
+
+  - **Description:** Returns a list of all users profiles along with their associated data.
+
+- **POST Request**
+
+  - **Description:** Creates a new user profile.
+  - **JSON Body:**
+    ```json
+    {
+      "name": "string",
+      "passwordProtected": "boolean",
+      "password": "string",
+      "isChildUser": "boolean",
+      "profileImage": "string"
+    }
+    ```
+
+- **PATCH Request**
+
+  - **Description:** Update an existing user profile.
+  - **JSON Body:**
+    ```json
+    {
+      "name": "string",
+      "passwordProtected": "boolean",
+      "previousPassword": "string",
+      "password": "string",
+      "isChildUser": "boolean",
+      "profileImage": "string"
+    }
+    ```
+
+### `/api/v1/scan-files`
+
+- **GET Request**
+
+  - **Description:** Provides real-time updates on the data generation process initiated by a POST request.
 
 - **POST Request**
 
@@ -26,9 +65,6 @@ Enter values without quotes:
       "type": "tv" | "movie"
     }
     ```
-
-- **GET Request**
-  - **Description:** Provides real-time updates on the data generation process initiated by a POST request.
 
 ## Development Setup
 

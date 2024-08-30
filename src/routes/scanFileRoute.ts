@@ -4,10 +4,8 @@ import { Router } from "express";
 import generateTVMetadata from "../controllers/generateTVMetadata";
 import generateMovieMetadata from "../controllers/generateMovieMetadata";
 import readJson from "../utils/readJson";
-import express from "express";
 
 const router = Router();
-router.use(express.json());
 
 // Global progress data
 let progressData = { processed: 0, failed: 0, total: 0, status: "idle" };
@@ -77,7 +75,7 @@ router.post("/", async (req, res) => {
         } else if (media_type === "tv") {
           const { tvShow } = await generateTVMetadata(
             subdirectoryPath,
-            config.fileNameDominance
+            config.fileSettings.fileNameDominance
           );
           metadata = tvShow;
         }
