@@ -7,6 +7,8 @@ Enter values without quotes:
 - `TMDB_API_KEY`: Your TMDB API key.
 - `DATA_DIRECTORY_PATH`: Path to store the generated TMDB data.
 - `CONFIG_PATH`: Path to the config file.
+- `SESSION_SECRET`: Enter a set of random characters to hash the passwords
+- `PORT`: Default - 8803
 
 ## API Endpoints
 
