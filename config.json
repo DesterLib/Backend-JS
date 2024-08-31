@@ -1,6 +1,8 @@
 {
   "server": {
-    "name": "",
+    "name": "Dester"
+  },
+  "desktop": {
     "homePage": {
       "carouselEnabled": true,
       "categorySliderEnabled": true,
