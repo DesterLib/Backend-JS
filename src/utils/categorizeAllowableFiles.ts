@@ -43,11 +43,11 @@ function categorizeAllowableFiles(folderPath: string): CategorizedFiles {
       const ext = path.extname(file).toLowerCase();
       const fullPath = path.join(folderPath, file);
 
-      if (config.allowedVideoExtensions.includes(ext)) {
+      if (config.server.allowedExtensions.video.includes(ext)) {
         categorizedFiles.videos.push(fullPath);
-      } else if (config.allowedImageExtensions.includes(ext)) {
+      } else if (config.server.allowedExtensions.image.includes(ext)) {
         categorizedFiles.images.push(fullPath);
-      } else if (config.allowedSubtitleExtensions.includes(ext)) {
+      } else if (config.server.allowedExtensions.subtitle.includes(ext)) {
         categorizedFiles.subtitles.push(fullPath);
       }
     });

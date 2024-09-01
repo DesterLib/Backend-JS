@@ -15,6 +15,7 @@ router.patch("/edit/:id", async (req, res) => {
 
   const { id } = req.params;
 
+  // todo: fix unused variable passwordProtected
   const { name, passwordProtected, password, isChildUser, profileImage } =
     req.body;
 
@@ -42,7 +43,7 @@ router.patch("/edit/:id", async (req, res) => {
       return res.status(500).json({ error: "Error hashing the password" });
     }
   }
-  
+
   try {
     await writeJson(CONFIG_FILE_PATH, config);
     res.status(200).json({

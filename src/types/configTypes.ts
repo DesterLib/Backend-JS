@@ -1,13 +1,18 @@
-export type Dominance = "folder" | "filename";
+export type FileNameDominance = "folder" | "file";
 
 export interface Config {
   server: Server;
+  desktop: Desktop;
   users: User[];
-  fileSettings: FileSettings;
   collections: Collection[];
 }
 
+export interface Desktop {
+  homePage: HomePage;
+}
+
 export interface Collection {
+  id: string;
   name: string;
   path: string;
   mediaType: string;
@@ -15,11 +20,6 @@ export interface Collection {
   passwordProtected: boolean;
   password: string;
   userAccessIds: string[];
-}
-
-export interface FileSettings {
-  fileNameDominance: Dominance;
-  allowedExtensions: AllowedExtensions;
 }
 
 export interface AllowedExtensions {
@@ -30,7 +30,8 @@ export interface AllowedExtensions {
 
 export interface Server {
   name: string;
-  homePage: HomePage;
+  fileNameDominance: FileNameDominance;
+  allowedExtensions: AllowedExtensions;
 }
 
 export interface HomePage {

@@ -75,7 +75,7 @@ router.post("/", async (req, res) => {
         } else if (media_type === "tv") {
           const { tvShow } = await generateTVMetadata(
             subdirectoryPath,
-            config.fileSettings.fileNameDominance
+            config.server.fileNameDominance
           );
           metadata = tvShow;
         }

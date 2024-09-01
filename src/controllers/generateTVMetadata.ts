@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { Dominance } from "../types/configTypes";
+import { FileNameDominance } from "../types/configTypes";
 import { Season, TVShow } from "../types/tmdbTypes";
 import {
   fetchTvTmdbDataBase,
@@ -13,7 +13,7 @@ import categorizeAllowableFiles from "../utils/categorizeAllowableFiles";
 // Main function to generate TV metadata
 async function generateTVMetadata(
   mainFolder: string,
-  dominance: Dominance = "folder"
+  dominance: FileNameDominance = "folder"
 ): Promise<{ tvShow: TVShow }> {
   try {
     const tmdbId = extractTMDBIdFromFolder(mainFolder);
@@ -46,7 +46,7 @@ function extractTMDBIdFromFolder(mainFolder: string): string | null {
 async function processSeasonFolders(
   mainFolder: string,
   tmdbId: string | null,
-  dominance: Dominance
+  dominance: FileNameDominance
 ): Promise<Season[]> {
   const seasonFolders = getSubdirectories(mainFolder);
   const seasons: Season[] = [];
@@ -90,7 +90,7 @@ async function processEpisodeFiles(
   seasonPath: string,
   folderSeasonNumber: number,
   tmdbId: string | null,
-  dominance: Dominance
+  dominance: FileNameDominance
 ): Promise<any[]> {
   const episodeFiles = categorizeAllowableFiles(seasonPath);
   const episodes: any[] = [];
@@ -140,7 +140,7 @@ function getSubdirectories(mainFolder: string): string[] {
 function getEpisodeDetails(
   episodeFile: string,
   folderSeasonNumber: number,
-  dominance: Dominance
+  dominance: FileNameDominance
 ): { episodeNumber: number | null; finalSeasonNumber: number } {
   const episodeMatch = episodeFile.match(/s?(\d+)[eE](\d+)/);
   if (!episodeMatch)
@@ -149,7 +149,7 @@ function getEpisodeDetails(
   const filenameSeasonNumber = parseInt(episodeMatch[1], 10);
   const episodeNumber = parseInt(episodeMatch[2], 10);
   const finalSeasonNumber =
-    dominance === "filename" && filenameSeasonNumber !== folderSeasonNumber
+    dominance === "file" && filenameSeasonNumber !== folderSeasonNumber
       ? filenameSeasonNumber
       : folderSeasonNumber;
 

@@ -3,13 +3,14 @@
   "version": "0.0.1",
   "description": "Typesafe javascript backend for DesterLib",
   "type": "module",
-  "main": "server.js",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts",
+    "build": "tsc --outDir dist && pkgroll",
     "gen:movie": "tsx dummy_folder_gen.ts -m movie -f /Users/alken/Desktop/dester/js-server/bin/movies",
     "gen:tv": "tsx dummy_folder_gen.ts -m tv -f /Users/alken/Desktop/dester/js-server/bin/tvShows"
   },
+  "exports": "./dist/app.js",
   "keywords": [
     "dester",
     "desterlib"
@@ -27,15 +28,16 @@
     "helmet": "^7.1.0",
     "json-query": "^2.2.2",
     "minimist": "^1.2.8",
-    "node-cache": "^5.1.2"
-  },
-  "devDependencies": {
+    "node-cache": "^5.1.2",
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/json-query": "^2.2.6",
-    "@types/minimist": "^1.2.5",
+    "@types/minimist": "^1.2.5"
+  },
+  "devDependencies": {
     "@types/node": "^22.2.0",
+    "pkgroll": "^2.4.2",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4"
   }

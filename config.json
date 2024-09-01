@@ -1,23 +1,58 @@
 {
   "server": {
-    "name": "Dester"
+    "name": "Dester Server",
+    "fileNameDominance": "folder",
+    "allowedExtensions": {
+      "video": [
+        ".mp4",
+        ".mkv",
+        ".avi",
+        ".mov",
+        ".webm"
+      ],
+      "image": [
+        ".png",
+        ".jpg",
+        ".jpeg",
+        ".webp",
+        ".svg"
+      ],
+      "subtitle": [
+        ".srt",
+        ".vtt",
+        ".ass"
+      ]
+    }
   },
   "desktop": {
     "homePage": {
-      "carouselEnabled": true,
+      "carouselEnabled": false,
       "categorySliderEnabled": true,
       "genreSliderEnabled": true,
       "collectionSliderEnabled": true
     }
   },
   "users": [],
-  "fileSettings": {
-    "fileNameDominance": "folder",
-    "allowedExtensions": {
-      "video": [".mp4", ".mkv", ".avi", ".mov", ".webm"],
-      "image": [".png", ".jpg", ".jpeg", ".webp", ".svg"],
-      "subtitle": [".srt", ".vtt", ".ass"]
+  "collections": [
+    {
+      "id": "ECJg1JjBeY",
+      "name": "Hello",
+      "path": "/home/desktop",
+      "mediaType": "movie",
+      "isAdult": false,
+      "passwordProtected": true,
+      "password": "$2b$10$UYmwoK7DVas2MbWy2hVLfeO06OGbVEqhbCOol.yjW0PI/MQSUd.Ie",
+      "userAccessIds": []
+    },
+    {
+      "id": "xHHsCv5WLT",
+      "name": "Waling",
+      "path": "/home/desktop/wail",
+      "mediaType": "movie",
+      "isAdult": false,
+      "passwordProtected": false,
+      "password": "",
+      "userAccessIds": []
     }
-  },
-  "collections": []
+  ]
 }
