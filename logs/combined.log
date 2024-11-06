@@ -1,0 +1,4 @@
+2024-11-06T07:17:09.551Z [INFO] - Request - GET /api/v1/scan-files {"apiKey":"unknown","method":"GET","url":"/api/v1/scan-files"}
+2024-11-06T07:17:42.291Z [INFO] - Request - GET /api/v1/scan-files {"apiKey":"unknown","method":"GET","url":"/api/v1/scan-files"}
+2024-11-06T07:18:32.695Z [INFO] - Request - GET /api/v1/scan-files {"apiKey":"unknown","method":"GET","url":"/api/v1/scan-files"}
+2024-11-06T07:42:55.253Z [INFO] - Request - GET /api/v1/scan-files {"apiKey":"unknown","method":"GET","url":"/api/v1/scan-files"}

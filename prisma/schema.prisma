@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MediaFolderCollection {
+  id                 String           @id @default(uuid())
+  collectionAccesses ListUserAccess[]
+  items              MediaItem[]
+}
+
+model MediaItem {
+  id                      String                 @id @default(uuid())
+  externalId              String
+  externalSource          String
+  mediaType               MediaType
+  name                    String?
+  description             String?
+  poster                  String?
+  backdrop                String?
+  mediaFolderCollection   MediaFolderCollection? @relation(fields: [mediaFolderCollectionId], references: [id])
+  mediaFolderCollectionId String?
+  listUserAccess          ListUserAccess[]
+
+  @@unique([externalId, externalSource])
+}
+
+enum MediaType {
+  MOVIE
+  TVSHOW
+}
+
+model List {
+  id             String           @id @default(uuid())
+  name           String
+  listUserAccess ListUserAccess[]
+}
+
+enum ListType {
+  FAVOURITES
+  WATCHLIST
+  CUSTOM
+}
+
+model ListUserAccess {
+  id                      String                 @id @default(uuid())
+  user                    User                   @relation(fields: [userId], references: [id])
+  userId                  String
+  mediaItem               MediaItem?             @relation(fields: [mediaItemId], references: [id])
+  mediaItemId             String?
+  list                    List?                  @relation(fields: [listId], references: [id])
+  listId                  String?
+  mediaFolderCollection   MediaFolderCollection? @relation(fields: [mediaFolderCollectionId], references: [id])
+  mediaFolderCollectionId String?
+  accessType              AccessType
+
+  @@unique([userId, mediaItemId])
+  @@unique([userId, listId])
+  @@unique([userId, mediaFolderCollectionId])
+}
+
+enum AccessType {
+  ALLOWED
+  DISALLOWED
+}
+
+model User {
+  id             String           @id @default(uuid())
+  userName       String           @unique
+  name           String
+  hashedPassword String
+  isChild        Boolean          @default(false)
+  listUserAccess ListUserAccess[]
+}

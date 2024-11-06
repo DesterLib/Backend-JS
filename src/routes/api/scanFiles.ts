@@ -1,9 +1,10 @@
 import fs from "fs";
 import path from "path";
 import { Router } from "express";
-import generateTVMetadata from "../controllers/generateTVMetadata";
-import generateMovieMetadata from "../controllers/generateMovieMetadata";
-import readJson from "../utils/readJson";
+import generateTVMetadata from "../../controllers/generateTVMetadata";
+import generateMovieMetadata from "../../controllers/generateMovieMetadata";
+import readJson from "../../utils/readJson";
+import prisma from "../../db/prisma";
 
 const router = Router();
 
@@ -78,6 +79,33 @@ router.post("/", async (req, res) => {
             config.server.fileNameDominance
           );
           metadata = tvShow;
+        }
+
+        if (!metadata) {
+          throw new Error("Metadata could not be generated");
+        }
+
+        const externalId = String(metadata.id);
+        const mediaType = media_type === "movie" ? "MOVIE" : "TVSHOW";
+        const externalSource = "tmdb";
+
+        const existingItem = await prisma.mediaItem.findFirst({
+          where: {
+            externalId,
+            externalSource,
+          },
+        });
+
+        if (existingItem) {
+          console.log("Item Exists in DB");
+        } else {
+          await prisma.mediaItem.create({
+            data: {
+              externalId,
+              externalSource,
+              mediaType,
+            },
+          });
         }
 
         jsonData.push(metadata);

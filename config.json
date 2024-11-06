@@ -1,27 +1,11 @@
 {
   "server": {
-    "name": "Dester Server",
+    "name": "Home Server",
     "fileNameDominance": "folder",
     "allowedExtensions": {
-      "video": [
-        ".mp4",
-        ".mkv",
-        ".avi",
-        ".mov",
-        ".webm"
-      ],
-      "image": [
-        ".png",
-        ".jpg",
-        ".jpeg",
-        ".webp",
-        ".svg"
-      ],
-      "subtitle": [
-        ".srt",
-        ".vtt",
-        ".ass"
-      ]
+      "video": [".mp4", ".mkv", ".avi", ".mov", ".webm"],
+      "image": [".png", ".jpg", ".jpeg", ".webp", ".svg"],
+      "subtitle": [".srt", ".vtt", ".ass"]
     }
   },
   "desktop": {
@@ -40,8 +24,6 @@
       "path": "/home/desktop",
       "mediaType": "movie",
       "isAdult": false,
-      "passwordProtected": true,
-      "password": "$2b$10$UYmwoK7DVas2MbWy2hVLfeO06OGbVEqhbCOol.yjW0PI/MQSUd.Ie",
       "userAccessIds": []
     },
     {
@@ -50,8 +32,22 @@
       "path": "/home/desktop/wail",
       "mediaType": "movie",
       "isAdult": false,
-      "passwordProtected": false,
-      "password": "",
+      "userAccessIds": []
+    },
+    {
+      "id": "2iOfxeBx2k",
+      "name": "Avengers",
+      "path": "/Users/alken/Downloads/folder",
+      "mediaType": "movie",
+      "isAdult": false,
+      "userAccessIds": []
+    },
+    {
+      "id": "XAlRSEkP7d",
+      "name": "Amam",
+      "path": "/Users/alken/Downloads/Photos",
+      "mediaType": "tv",
+      "isAdult": true,
       "userAccessIds": []
     }
   ]
