@@ -276,3 +276,15 @@
 2024-11-14T19:01:22.374Z [INFO] - Request - GET / {"apiKey":"unknown","method":"GET","url":"/"}
 2024-11-14T19:01:42.313Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
 2024-11-14T19:02:22.932Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-14T19:20:58.928Z [INFO] - Request - GET /api/v1/scan-files {"apiKey":"unknown","method":"GET","url":"/api/v1/scan-files"}
+2024-11-14T19:21:04.785Z [INFO] - Request - GET /api/v1/metadata {"apiKey":"unknown","method":"GET","url":"/api/v1/metadata"}
+2024-11-14T19:21:11.654Z [INFO] - Request - GET /api/v1/metadata/123 {"apiKey":"unknown","method":"GET","url":"/api/v1/metadata/123"}
+2024-11-14T19:21:11.719Z [INFO] - Request - GET /favicon.ico {"apiKey":"unknown","method":"GET","url":"/favicon.ico"}
+2024-11-14T19:25:13.485Z [INFO] - Request - GET /api/v1/metadata/123?collectionName=avengers {"apiKey":"unknown","method":"GET","url":"/api/v1/metadata/123?collectionName=avengers"}
+2024-11-14T19:26:50.708Z [INFO] - Request - GET /api/v1/metadata/123?collectionName=avengers {"apiKey":"unknown","method":"GET","url":"/api/v1/metadata/123?collectionName=avengers"}
+2024-11-14T19:27:05.668Z [INFO] - Request - GET /api/v1/metadata/123?collectionName=avengers {"apiKey":"unknown","method":"GET","url":"/api/v1/metadata/123?collectionName=avengers"}
+2024-11-14T19:28:11.325Z [INFO] - Request - GET /api/v1/metadata/123?collectionName=avengers {"apiKey":"unknown","method":"GET","url":"/api/v1/metadata/123?collectionName=avengers"}
+2024-11-14T19:30:15.950Z [INFO] - Request - GET /api/v1/metadata/123?collectionName=avengers {"apiKey":"unknown","method":"GET","url":"/api/v1/metadata/123?collectionName=avengers"}
+2024-11-14T19:30:29.831Z [INFO] - Request - GET /api/v1/metadata/348?collectionName=avengers {"apiKey":"unknown","method":"GET","url":"/api/v1/metadata/348?collectionName=avengers"}
+2024-11-14T19:57:11.745Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-14T20:13:54.163Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
