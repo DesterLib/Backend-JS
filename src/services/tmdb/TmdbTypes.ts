@@ -1,4 +1,8 @@
+import { ServiceProvider } from "../types";
+
 export interface TmdbBaseMTData {
+  externalId: number;
+  externalSource: ServiceProvider;
   adult: boolean;
   title: string;
   description: string;

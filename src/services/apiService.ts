@@ -1,11 +1,9 @@
 import { fetchTmdbMovie } from "./tmdb/tmdbService";
-
-type ApiType = "tmdb" | "anilist";
-type Endpoint = "movie" | "tvshow" | "person" | "season";
+import { ServiceEndpoint, ServiceProvider } from "./types";
 
 interface ApiDataProps {
-  apiType: ApiType;
-  endpoint: Endpoint;
+  apiProvider: ServiceProvider;
+  endpoint: ServiceEndpoint;
   params: ApiDataParamsProps;
 }
 
@@ -16,20 +14,22 @@ interface ApiDataParamsProps {
 }
 
 export async function fetchApiData({
-  apiType,
+  apiProvider,
   endpoint,
   params,
 }: ApiDataProps) {
-  switch (apiType) {
+  switch (apiProvider) {
     case "tmdb":
       if (endpoint === "movie") return await fetchTmdbMovie(params.id);
       throw new Error(`TMDB endpoint "${endpoint}" is not supported.`);
 
+    // TODO
     // case "anilist":
+
     //   if (endpoint === "movie") return await fetchAnilistAnime(id);
     //   throw new Error(`AniList endpoint "${endpoint}" is not supported.`);
 
     default:
-      throw new Error(`API type "${apiType}" is not supported.`);
+      throw new Error(`API type "${apiProvider}" is not supported.`);
   }
 }

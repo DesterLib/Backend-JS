@@ -2,6 +2,8 @@ import { TmdbMovieData, TmdbTvShowData } from "./TmdbTypes";
 
 export function mapTmdbMovie(data: any): TmdbMovieData {
   return {
+    externalId: data.id || 0,
+    externalSource: "tmdb",
     adult: data.adult || false,
     title: data.name || "unavailable",
     description: data.overview || "unavailable",
@@ -16,6 +18,8 @@ export function mapTmdbMovie(data: any): TmdbMovieData {
 
 export function mapTmdbTvShow(data: any): TmdbTvShowData {
   return {
+    externalId: data.id || 0,
+    externalSource: "tmdb",
     adult: data.adult || false,
     title: data.name || "unavailable",
     description: data.overview || "unavailable",
