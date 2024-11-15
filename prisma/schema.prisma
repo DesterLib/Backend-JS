@@ -7,72 +7,196 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model MediaFolderCollection {
-  id                 String           @id @default(uuid())
-  collectionAccesses ListUserAccess[]
-  items              MediaItem[]
-}
-
-model MediaItem {
-  id                      String                 @id @default(uuid())
-  externalId              String
-  externalSource          String
-  mediaType               MediaType
-  name                    String?
-  description             String?
-  poster                  String?
-  backdrop                String?
-  mediaFolderCollection   MediaFolderCollection? @relation(fields: [mediaFolderCollectionId], references: [id])
-  mediaFolderCollectionId String?
-  listUserAccess          ListUserAccess[]
-
-  @@unique([externalId, externalSource])
-}
-
 enum MediaType {
   MOVIE
   TVSHOW
+  MANGA
+  MUSIC
 }
 
-model List {
-  id             String           @id @default(uuid())
-  name           String
-  listUserAccess ListUserAccess[]
+enum FileType {
+  VIDEO
+  AUDIO
+  PDF
+  IMAGE
+  SUBTITLE
 }
 
-enum ListType {
-  FAVOURITES
-  WATCHLIST
-  CUSTOM
+model BaseMedia {
+  id            String    @id @default(uuid())
+  mediaType     MediaType
+  title         String
+  englishTitle  String?
+  originalTitle String?
+  overview      String?
+  posterPath    String
+  backdropPath  String?
+  movie         Movie?
+  tvShow        TvShow?
+  manga         Manga?
+  music         Music?
+  basePath      String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 
-model ListUserAccess {
-  id                      String                 @id @default(uuid())
-  user                    User                   @relation(fields: [userId], references: [id])
-  userId                  String
-  mediaItem               MediaItem?             @relation(fields: [mediaItemId], references: [id])
-  mediaItemId             String?
-  list                    List?                  @relation(fields: [listId], references: [id])
-  listId                  String?
-  mediaFolderCollection   MediaFolderCollection? @relation(fields: [mediaFolderCollectionId], references: [id])
-  mediaFolderCollectionId String?
-  accessType              AccessType
+model File {
+  id         String    @id @default(uuid())
+  name       String
+  path       String
+  fileType   FileType
+  fileFormat String
+  mediaId    String
+  mediaType  MediaType
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  movie      Movie?    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  movieId    String?
+  episode    Episode?  @relation(fields: [episodeId], references: [id], onDelete: Cascade)
+  episodeId  String?
+  manga      Manga?    @relation(fields: [mangaId], references: [id], onDelete: Cascade)
+  mangaId    String?
+  music      Music?    @relation(fields: [musicId], references: [id], onDelete: Cascade)
+  musicId    String?
 
-  @@unique([userId, mediaItemId])
-  @@unique([userId, listId])
-  @@unique([userId, mediaFolderCollectionId])
+  @@index([mediaId, mediaType])
 }
 
-enum AccessType {
-  ALLOWED
-  DISALLOWED
+model Movie {
+  id          String    @id @default(uuid())
+  baseMediaId String    @unique
+  baseMedia   BaseMedia @relation(fields: [baseMediaId], references: [id], onDelete: Cascade)
+  file        File[]
+  trailer     String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model TvShow {
+  id           String    @id @default(uuid())
+  baseMediaId  String    @unique
+  baseMedia    BaseMedia @relation(fields: [baseMediaId], references: [id], onDelete: Cascade)
+  seasons      Season[]
+  totalSeasons Int
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Season {
+  id            String    @id @default(uuid())
+  seasonNumber  Int
+  seasonPath    String
+  seasonName    String
+  totalEpisodes Int
+  tvShowId      String
+  tvShow        TvShow    @relation(fields: [tvShowId], references: [id], onDelete: Cascade)
+  episodes      Episode[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Episode {
+  id            String   @id @default(uuid())
+  episodeNumber Int
+  episodePath   String
+  episodeName   String
+  seasonId      String
+  season        Season   @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  file          File[]
+}
+
+model Manga {
+  id            String    @id @default(uuid())
+  baseMediaId   String    @unique
+  baseMedia     BaseMedia @relation(fields: [baseMediaId], references: [id], onDelete: Cascade)
+  totalChapters Int
+  file          File[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Music {
+  id          String    @id @default(uuid())
+  baseMediaId String    @unique
+  baseMedia   BaseMedia @relation(fields: [baseMediaId], references: [id], onDelete: Cascade)
+  file        File[]
+  authorId    String    @unique
+  author      Person?   @relation(fields: [authorId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Person {
+  id           String   @id @default(uuid())
+  mediaId      String   @unique
+  name         String
+  profileImage String
+  music        Music[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model User {
-  id             String           @id @default(uuid())
-  userName       String           @unique
-  name           String
-  hashedPassword String
-  isChild        Boolean          @default(false)
-  listUserAccess ListUserAccess[]
+  id        String     @id @default(uuid())
+  userName  String     @unique
+  pin       Int
+  userRole  UserRole[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Role {
+  id          String           @id @default(uuid())
+  name        String
+  description String?
+  permissions RolePermission[]
+  users       UserRole[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model Permission {
+  id          String           @id @default(uuid())
+  name        String           @unique
+  description String?
+  roles       RolePermission[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model UserRole {
+  id         String   @id @default(uuid())
+  userId     String
+  roleId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  assignedAt DateTime @default(now())
+
+  @@unique([userId, roleId])
+}
+
+model RolePermission {
+  id           String     @id @default(uuid())
+  roleId       String
+  permissionId String
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+}
+
+enum ApiServiceProvider {
+  TMDB
+  ANILIST
+}
+
+model ApiService {
+  id       String             @id @default(uuid())
+  provider ApiServiceProvider
+  apiKey   String
+  default  Boolean            @default(false)
+
+  @@unique([provider, apiKey])
 }
