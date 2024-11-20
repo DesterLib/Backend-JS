@@ -290,3 +290,17 @@
 2024-11-14T20:13:54.163Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
 2024-11-15T15:06:45.405Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
 2024-11-15T15:09:14.465Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-15T15:56:16.753Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-15T16:45:06.564Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-15T16:45:18.545Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-15T16:46:18.040Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-15T16:46:28.580Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-15T16:46:41.651Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-17T19:39:29.205Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-17T19:39:51.372Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-17T19:41:20.373Z [INFO] - Request - POST /api/v1/generate-metadata {"apiKey":"unknown","method":"POST","url":"/api/v1/generate-metadata"}
+2024-11-20T20:45:07.811Z [INFO] - Request - POST /api/v1/collection {"apiKey":"unknown","method":"POST","url":"/api/v1/collection"}
+2024-11-20T20:48:50.131Z [INFO] - Request - GET /api/v1/scan-files {"apiKey":"unknown","method":"GET","url":"/api/v1/scan-files"}
+2024-11-20T20:48:56.585Z [INFO] - Request - GET /api/v1/collection {"apiKey":"unknown","method":"GET","url":"/api/v1/collection"}
+2024-11-20T20:49:33.066Z [INFO] - Request - GET /api/v1/collection {"apiKey":"unknown","method":"GET","url":"/api/v1/collection"}
+2024-11-20T20:51:08.274Z [INFO] - Request - GET /api/v1/collection/cc5e182d-b1a7-4939-a301-a22b407bad8a {"apiKey":"unknown","method":"GET","url":"/api/v1/collection/cc5e182d-b1a7-4939-a301-a22b407bad8a"}
